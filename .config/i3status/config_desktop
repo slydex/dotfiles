@@ -1,0 +1,58 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = false
+        interval = 1
+}
+
+order += "cpu_usage"
+order += "cpu_temperature 0"
+order += "ethernet enp0s25"
+order += "disk /"
+order += "disk /home"
+order += "disk /mnt/datadrive"
+order += "volume master"
+order += "tztime local"
+
+ethernet enp0s25 {
+        format_up = " LAN: %ip "
+        format_down = " LAN: link down"
+}
+
+tztime local {
+        format = " %d.%m.%Y  %H:%M:%S "
+}
+
+disk "/" {
+        format = " /: %free "
+}
+
+disk "/home" {
+        format = " /home: %free "
+}
+
+disk "/mnt/datadrive" {
+        format = " /sdb: %free "
+}
+
+volume master {
+        format = " ♪: %volume "
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+cpu_usage {
+        format = " CPU Load: %usage "
+}
+
+cpu_temperature 0 {
+        format = " CPU Temp: %degrees°C "
+        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input"
+}

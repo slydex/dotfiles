@@ -3,7 +3,7 @@
 LAPTOP="LVDS1"
 DOCK_1="LVDS1 HDMI3"
 DOCK_2="DP2 HDMI3"
-DESKTOP=""
+DESKTOP="DP1 HDMI2"
 
 SCREENS=($(xrandr --query | grep " connected" | cut -d" " -f1))
 SCREENSTR=$(echo "$SCREENS[*]" | tr -s " ")

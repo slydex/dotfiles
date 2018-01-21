@@ -13,6 +13,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='gvim'
 fi
+#export BROWSER="google-chrome-stable"
 export BROWSER="firefox-developer-edition"
 export ARCHFLAGS="-arch x86_64"
 #export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -35,5 +36,5 @@ alias scr='source ~/.scripts/screenAutoConfig.sh'
 alias suspend='systemctl suspend'
 alias lock='~/.scripts/lock.sh'
 
-alias win='sudo ~/VMs/win10.sh'
+alias win='~/.scripts/win10.sh'
 alias mnt_nas='mount /mnt/nas/video && mount /mnt/nas/music && mount /mnt/nas/home && mount /mnt/nas/pictures'

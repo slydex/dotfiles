@@ -18,11 +18,11 @@ SCREENSTR=$(echo "$SCREENS[*]" | tr -s " ")
 
 if [[ "$SCREENSTR" == "$LAPTOP" ]] ; then
     mv /tmp/screenshot_0.png $IMAGE
-elif [[ "$SCREENSTR" == "DOCK_1" ]] ; then
+elif [[ "$SCREENSTR" == "$DOCK_1" ]] ; then
     convert -gravity center -background black +append /tmp/screenshot_1.png /tmp/screenshot_0.png $IMAGE
-elif [[ "$SCREENSTR" == "DOCK_2"  ]] ; then
+elif [[ "$SCREENSTR" == "$DOCK_2"  ]] ; then
     convert -gravity center -background black +append /tmp/screenshot_1.png /tmp/screenshot_0.png $IMAGE
-elif [[ "$SCRENNSTR" == "DESKTOP"  ]] ; then
+elif [[ "$SCREENSTR" == "$DESKTOP"  ]] ; then
     convert -gravity center -background black +append /tmp/screenshot_1.png /tmp/screenshot_0.png $IMAGE
 fi
 playerctl stop &> /dev/null
