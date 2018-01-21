@@ -17,6 +17,12 @@ echo -ne "\r                      \rAdjusting screenlayout"
 ~/.scripts/screenLayouts/desktop+vm.sh
 echo -e "\t\t\t\t\t [DONE]"
 
+echo -n "Creating virtual network adapter"
+sudo ip tuntap add dev tap0 mode tap
+sudo brctl addif br0 tap0
+sudo ip link set tap0 up promisc on
+echo -e "\t\t\t [DONE]"
+
 echo -n "Starting samba"
 sudo systemctl start smbd.service
 sudo systemctl start nmbd.service
@@ -62,10 +68,10 @@ sudo \
               -nographic \
               -device vfio-pci,host=01:00.0,multifunction=on \
               -device vfio-pci,host=01:00.1 \
-              -device vfio-pci,host=00:1a.0 
+              -device vfio-pci,host=00:1a.0
 
-# Alternative network setup 
-#-net nic -net bridge,br=br0 
+# Alternative network setup
+#-net nic -net bridge,br=br0
 
 # Standard VGA
 # Remove "-nographic \" and "-device vfio-pci" lines
@@ -84,6 +90,12 @@ echo -n "Stopping Samba"
 sudo systemctl stop smbd.service
 sudo systemctl stop nmbd.service
 echo -e "\t\t\t\t\t\t [DONE]"
+
+echo -n "Destroying virtual network adapter"
+sudo ip link set tap0 down
+sudo brctl delif br0 tap0
+sudo ip tuntap del dev tap0 mode tap
+echo -e "\t\t\t [DONE]"
 
 rm /tmp/OVMF_VARS.fd
 
