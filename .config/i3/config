@@ -171,7 +171,6 @@ client.focused_inactive #333333 #333333 #FFFFFF #000000
 #client.focused #000000 #c4c4c4 #FFFFFF #000000
 client.focused #000000 #cae1ff #FFFFFF #000000
 
-exec --no-startup-id ~/.scripts/setupEnvVars.sh
 exec --no-startup-id ~/.scripts/screenAutoConfig.sh 
 exec --no-startup-id thunderbird
 exec --no-startup-id dropbox
@@ -186,3 +185,4 @@ bindsym Control+Mod1+Left workspace prev_on_output
 for_window [class="MATLAB R2017b - academic use" title="^Fig"] floating enable
 for_window [class="SpeedCrunch" title="SpeedCrunch"] floating enable
 for_window [class="peac++" title="PEAC++"] floating enable
+for_window [class="gnuplot"] floating enable

@@ -1,5 +1,12 @@
 BasedOnStyle: LLVM
+AlignConsecutiveAssignments: 'true'
+AlignTrailingComments: 'true'
+AllowShortCaseLabelsOnASingleLine: 'true'
+AllowShortIfStatementsOnASingleLine: 'true'
 AllowShortLoopsOnASingleLine: 'true'
+BinPackArguments: 'false'
+BinPackParameters: 'false'
+BreakBeforeTernaryOperators: 'true'
 BraceWrapping:
   AfterClass:      true
   AfterControlStatement: false
@@ -13,11 +20,15 @@ BraceWrapping:
   BeforeElse:      true
   IndentBraces:    false
 BreakBeforeBraces: Custom
-ColumnLimit: '120'
+ColumnLimit: '150'
+FixNamespaceComments: 'true'
+IndentCaseLabels: 'true'
 IndentWidth: '4'
 Language: Cpp
+PointerAlignment: Left
 SpaceAfterCStyleCast: 'false'
 SpaceBeforeParens: Never
+SpacesBeforeTrailingComments: 4
 SpaceInEmptyParentheses: 'false'
 SpacesInParentheses: 'true'
 SpacesInSquareBrackets: 'false'

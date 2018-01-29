@@ -2,7 +2,7 @@
 
 LAPTOP="LVDS1"
 DOCK_1="LVDS1 HDMI3"
-DOCK_2="DP2 HDMI3"
+DOCK_2="LVDS1 DP2 HDMI3"
 DESKTOP="DP1 HDMI2"
 TEXT='LOCKED_'
 IMAGE=/tmp/screenshot.png
@@ -21,7 +21,7 @@ if [[ "$SCREENSTR" == "$LAPTOP" ]] ; then
 elif [[ "$SCREENSTR" == "$DOCK_1" ]] ; then
     convert -gravity center -background black +append /tmp/screenshot_1.png /tmp/screenshot_0.png $IMAGE
 elif [[ "$SCREENSTR" == "$DOCK_2"  ]] ; then
-    convert -gravity center -background black +append /tmp/screenshot_1.png /tmp/screenshot_0.png $IMAGE
+    convert -gravity center -background black +append /tmp/screenshot_0.png /tmp/screenshot_1.png $IMAGE
 elif [[ "$SCREENSTR" == "$DESKTOP"  ]] ; then
     convert -gravity center -background black +append /tmp/screenshot_1.png /tmp/screenshot_0.png $IMAGE
 fi
