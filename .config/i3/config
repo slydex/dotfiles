@@ -141,17 +141,26 @@ bindsym XF86AudioPrev exec playerctl previous
 #bindsym XF86AudioPrev exec cmus-remote -r
 #bindsym XF86AudioNext exec cmus-remote -n
 
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
+bindsym XF86Display exec arandr
+bindsym XF86Tools exec pavucontrol
+
 bindsym Print exec escrotum -s ~/Documents/Screenshots/%Y-%m-%d-%T.png
 
 bindsym Control+Mod1+h exec urxvt -e ranger
+bindsym Control+Mod1+t exec urxvt -e htop
 bindsym Control+Mod1+p exec spotify
 #bindsym Control+Mod1+f exec google-chrome-stable
 bindsym Control+Mod1+f exec firefox-developer-edition
 bindsym Control+Mod1+m exec thunderbird
 bindsym Control+Mod1+c exec speedcrunch
 bindsym Control+Mod1+r exec rambox
+bindsym Control+Mod1+b exec color_helper
 
-exec --no-startup-id "pulseaudio --start"
+#exec --no-startup-id "pulseaudio -k"
+#exec --no-startup-id "pulseaudio -D"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -182,7 +191,8 @@ bindsym $mod+Control+Shift+Right move workspace to output right
 bindsym Control+Mod1+Right workspace next_on_output
 bindsym Control+Mod1+Left workspace prev_on_output
 
-for_window [class="MATLAB R2017b - academic use" title="^Fig"] floating enable
+for_window [title="^Fig"] floating enable
 for_window [class="SpeedCrunch" title="SpeedCrunch"] floating enable
 for_window [class="peac++" title="PEAC++"] floating enable
+for_window [title="3DMGSAS"] floating enable
 for_window [class="gnuplot"] floating enable

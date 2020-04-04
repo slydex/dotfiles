@@ -1,8 +1,8 @@
 #!/bin/zsh
 
-LAPTOP="LVDS1"
-DOCK_1="LVDS1 HDMI3"
-DOCK_2="LVDS1 DP2 HDMI3"
+LAPTOP="eDP1"
+DOCK_1="eDP1 DP2-2"
+DOCK_2="eDP1 HDMI2"
 DESKTOP="DP1 HDMI2"
 TEXT='LOCKED_'
 IMAGE=/tmp/screenshot.png
@@ -19,7 +19,7 @@ SCREENSTR=$(echo "$SCREENS[*]" | tr -s " ")
 if [[ "$SCREENSTR" == "$LAPTOP" ]] ; then
     mv /tmp/screenshot_0.png $IMAGE
 elif [[ "$SCREENSTR" == "$DOCK_1" ]] ; then
-    convert -gravity center -background black +append /tmp/screenshot_1.png /tmp/screenshot_0.png $IMAGE
+    convert -gravity center -background black +append /tmp/screenshot_0.png /tmp/screenshot_1.png $IMAGE
 elif [[ "$SCREENSTR" == "$DOCK_2"  ]] ; then
     convert -gravity center -background black +append /tmp/screenshot_0.png /tmp/screenshot_1.png $IMAGE
 elif [[ "$SCREENSTR" == "$DESKTOP"  ]] ; then
@@ -29,3 +29,5 @@ playerctl stop &> /dev/null
 i3lock -uei $IMAGE
 rm /tmp/screenshot*.png
 xset dpms force off
+sleep 3
+pactl set-card-profile alsa_card.pci-0000_00_1f.3 off

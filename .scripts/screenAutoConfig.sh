@@ -1,19 +1,18 @@
 #!/bin/zsh
 
-LAPTOP="LVDS1"
-DOCK_1="LVDS1 HDMI3"
-DOCK_2="LVDS1 DP2 HDMI3"
-DESKTOP="DP1 HDMI2"
+LAPTOP="eDP1"
+MATHCCES="eDP1 DP2-2"
+AINT="eDP1 HDMI2"
 
-SCREENS=($(xrandr --query | grep " connected" | cut -d" " -f1))
+SCREENS=($(xrandr --query | grep " connected" | cut -d" " -f1 | tr '\r\n' ' ' | sed '$s/ $/\n/'))
 SCREENSTR=$(echo "$SCREENS[*]" | tr -s " ")
 
 if [[ "$SCREENSTR" == "$LAPTOP" ]] ; then
     ~/.scripts/screenLayouts/laptop.sh
-elif [[ "$SCREENSTR" == "$DOCK_1" ]] ; then
+elif [[ "$SCREENSTR" == "$MATHCCES" ]] ; then
     ~/.scripts/screenLayouts/dock_1.sh
-elif [[ "$SCREENSTR" == "$DOCK_2" ]] ; then
-    ~/.scripts/screenLayouts/dock_2.sh
-elif [[ "$SCREENSTR" == "$DESKTOP" ]] ; then
-    ~/.scripts/screenLayouts/desktop.sh
+elif [[ "$SCREENSTR" == "$AINT" ]] ; then
+    ~/.scripts/screenLayouts/aint.sh
+else 
+    echo "no valid config found"
 fi
